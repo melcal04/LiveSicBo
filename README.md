@@ -1,6 +1,6 @@
 # Live Sic Bo - Mobile Revamp
 
-This is an automated testing script for the Live Sic Bo Mobile Revamp.
+This is a backup version of an automated testing script for the Live Sic Bo Mobile Revamp.
 
 ## Tech Stack
 - Automation Framework: Selenium
