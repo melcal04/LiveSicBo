@@ -17,7 +17,7 @@ This is a backup version of an automated testing script for the Live Sic Bo Mobi
 
 ## Versions
 - Version 1.0: Official Version -> Official Live Sic Bo Mobile Revamp Automation
-- Version 2.0: Component Version -> Change Path to Component Object
+- Version 1.1: Component Version -> Change Path to Component Object
 
 ## Notes
 ** I have completed the initial development of the automated testing scripts for the Live Sic Bo Mobile Revamp.
