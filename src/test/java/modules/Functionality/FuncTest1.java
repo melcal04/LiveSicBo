@@ -31,7 +31,7 @@ public class FuncTest1 extends Functionality {
         System.out.println("Other Information: " + targetTable);
         System.out.println("Actual Results: ");
 
-        int[] actualNumbersInResultPanel = GetHandler.getIntArray(GameLobby.Method.getNumbersInResultHistory(targetTable),
+        int[] actualNumbersInResultPanel = GetHandler.getIntArray(GameLobby.Method.getResultHistory(targetTable),
                 HandleCollection.WithScroll);
         String expectedNumbers = DataTypeHandler.toString(expectedNumbersInResultPanel);
         String actualNumbers = DataTypeHandler.toString(DataTypeHandler.reverseArray(Objects.requireNonNull(actualNumbersInResultPanel)));

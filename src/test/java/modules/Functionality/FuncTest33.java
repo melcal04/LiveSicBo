@@ -12,7 +12,7 @@ public class FuncTest33 extends Functionality {
 
     public static void placeABetOnFourOrMoreBettingOptions() {
         waitBettingPhase(45, true);
-        WaitHandler.waitInvisibility(DealerTable.Label.PlaceYourBets, 150);
+        WaitHandler.waitInvisibility(DealerTable.Label.PlaceYourBetsPlease, 150);
         EventHandler.click(DealerTable.BettingOption.getMainBet(BettingOption.BIG));
         EventHandler.click(DealerTable.BettingOption.getMainBet(BettingOption.SMALL));
         EventHandler.click(DealerTable.BettingOption.getMainBet(BettingOption.ODD));

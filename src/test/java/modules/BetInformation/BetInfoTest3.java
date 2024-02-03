@@ -15,7 +15,7 @@ public class BetInfoTest3  extends BetInformation {
 
     public static void placeBet() {
         waitBettingPhase(30, false);
-        WaitHandler.waitInvisibility(DealerTable.Label.PlaceYourBets, 150);
+        WaitHandler.waitInvisibility(DealerTable.Label.PlaceYourBetsPlease, 150);
         EventHandler.click(DealerTable.BettingOption.getSingleDice(singleDiceBet));
         EventHandler.click(DealerTable.BettingOption.getSpecificDouble(specificDouble));
         EventHandler.click(DealerTable.BettingOption.getSpecificTriple(specificTriple));

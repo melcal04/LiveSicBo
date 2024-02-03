@@ -2,13 +2,11 @@
 Feature: Payout
 
   Background:
-    Given I Go To Mobile Site
+    Given I Go To The Live Casino
 
   @PayoutWait
   Scenario: PO Fetch: Wait Until There Is A Round Result For Payout
-    When I Login An Account
-    And I Go To Live Casino
-    And I Join Live Sic Bo Revamp
+    When I Join Live Sic Bo Revamp
     And I Enter The Dealer Table
     Then I Place A Bet Until There Is A Round Result For All Payouts
       | Small                    |

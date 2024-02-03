@@ -17,7 +17,7 @@ public class GameTest11 extends Gameplay {
         System.out.println("Actual Results: ");
 
         waitBettingPhase(40, true);
-        WaitHandler.waitInvisibility(DealerTable.Label.PlaceYourBets, 150);
+        WaitHandler.waitInvisibility(DealerTable.Label.PlaceYourBetsPlease, 150);
 
         for (byte i = 0; i < 5; i++) {
             verifyPlaceBet(DealerTable.BettingOption.getMainBet(BettingOption.MAIN_BET_LIST[i]),
@@ -40,7 +40,7 @@ public class GameTest11 extends Gameplay {
         }
 
         waitBettingPhase(40, true);
-        WaitHandler.waitInvisibility(DealerTable.Label.PlaceYourBets, 150);
+        WaitHandler.waitInvisibility(DealerTable.Label.PlaceYourBetsPlease, 150);
 
         for (byte i = 1; i <= 6; i++) {
             verifyPlaceBet(DealerTable.BettingOption.getSingleDice(i),

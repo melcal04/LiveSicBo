@@ -13,7 +13,7 @@ public class FuncTest12 extends Functionality {
         System.out.println("Test Case: 12");
         System.out.println("Actual Results: ");
 
-        if(GetHandler.getElements(MyBets.Container.HistoryCard, HandleCollection.WithException) == null) {
+        if(GetHandler.getElements(MyBets.Container.HistoryCards, HandleCollection.WithException) == null) {
             double expectedTotalBetHistory = 0;
             double actualTotalBetHistory = GetHandler.getDouble(MyBets.Label.TotalBetHistory);
             AssertHandler.assertEquals(expectedTotalBetHistory, actualTotalBetHistory,

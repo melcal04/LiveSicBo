@@ -23,7 +23,7 @@ public class FuncTest26 extends Functionality {
         System.out.println("Test Case: 26");
         System.out.println("Actual Results: ");
 
-        verifyDisplay(DealerTable.Label.PlaceYourBets);
+        verifyDisplay(DealerTable.Label.PlaceYourBetsPlease);
 
         String newTable = GetHandler.getText(DealerTable.Label.TableInfo);
         AssertHandler.assertNotEquals(oldTable, newTable,

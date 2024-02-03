@@ -40,7 +40,7 @@ public class Statistics {
                 "//p[@id='showTimer']"
         );
         public static Component ShowDealing = new Component(
-                "Show Dealing Wording",
+                "Show Dealing",
                 "Label",
                 "Statistics Page",
                 "//p[@id='showDealingWording']"
@@ -149,7 +149,7 @@ public class Statistics {
                         "[position() > last() - 10]//div[contains(@class, 'text text')][1]"
         );
         public static Component LatestRoundResult = new Component(
-                "List of Latest Round Result",
+                "Latest Round Result",
                 "Label",
                 "Statistics Page",
                 "//div[@class='sicbo_line_result big active']//div"

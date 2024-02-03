@@ -19,12 +19,6 @@ public class GameLobby {
      ***************************************************************************************************************/
 
     public static class Container {
-        public static Component GameLobby = new Component(
-                "Game Lobby",
-                "Container",
-                "Game Lobby Page",
-                "//div[@class='dealer']"
-        );
         public static Component DealerTables = new Component(
                 "List of Dealer Tables",
                 "Container",
@@ -100,7 +94,7 @@ public class GameLobby {
                 "//div[@class='dealer station']//p[@class='table_name']"
         );
         public static Component FindATable = new Component(
-                "Find A Table",
+                "Let's find a table and start betting.",
                 "Label",
                 "Game Lobby Page",
                 "//p[contains(normalize-space(), 'find a table and start betting')]"
@@ -150,83 +144,30 @@ public class GameLobby {
     public static class Method {
         public static Component getDealerTable(String dealsOrTable) {
             return new Component(
-                    "Dealer Table of " + dealsOrTable,
+                    dealsOrTable + " Dealer Table",
                     "Container",
                     "Game Lobby Page",
                     tablesPath + "//p[(contains(text(), '" +
                             dealsOrTable + "'))]/ancestor::div[2]"
             );
         }
-        public static Component getNotDealerTable(String dealsOrTable) {
-            return new Component(
-                    "Not Dealer Table of " + dealsOrTable,
-                    "Container",
-                    "Game Lobby Page",
-                    tablesPath + "//p[@class='table_name' and not(contains(normalize-space(), '"
-                            + dealsOrTable + "'))]/ancestor::div[2]"
-            );
-        }
         public static Component getLatestRoundResult(String dealsOrTable) {
             return new Component(
-                    "Latest Round Result in Dealer Table of " + dealsOrTable,
+                    "Latest Round Result in " + dealsOrTable + " Dealer Table",
                     "Label",
                     "Game Lobby Page",
                     "//p[contains(text(),'" + dealsOrTable + "')]/ancestor::div[2]" +
                             "//div[@class='sicbo_line_result big active']//div"
             );
         }
-        public static Component getNumbersInResultHistory(String dealsOrTable) {
+        public static Component getResultHistory(String dealsOrTable) {
             return new Component(
-                    "Numbers in Result History in Dealer Table of " + dealsOrTable,
+                    "Result History in " + dealsOrTable + " Dealer Table",
                     "Container",
                     "Game Lobby Page",
                     "(//p[contains(text(),'" + dealsOrTable + "')]/ancestor::div[2]" +
                             "//div[contains(@class, 'sicbo_line_result big')])" +
                             "[position() > last() - 12]//div[4]"
-            );
-        }
-        public static Component getBigCounter(String dealsOrTable) {
-            return new Component(
-                    "Big Counter in Dealer Table of " + dealsOrTable,
-                    "Label",
-                    "Game Lobby Page",
-                    "//p[contains(text(),'" + dealsOrTable + "')]/ancestor::div[2]" +
-                            "//div[@class='sicbo_line_statistics']//div[1]//span[2]");
-        }
-        public static Component getSmallCounter(String dealsOrTable) {
-            return new Component(
-                    "Small Counter in Dealer Table of " + dealsOrTable,
-                    "Label",
-                    "Game Lobby Page",
-                    "//p[contains(text(),'" + dealsOrTable + "')]/ancestor::div[2]" +
-                            "//div[@class='sicbo_line_statistics']//div[2]//span[2]"
-            );
-        }
-        public static Component getTripleCounter(String dealsOrTable) {
-            return new Component(
-                    "Triple Counter in Dealer Table of " + dealsOrTable,
-                    "Label",
-                    "Game Lobby Page",
-                    "//p[contains(text(),'" + dealsOrTable + "')]/ancestor::div[2]" +
-                            "//div[@class='sicbo_line_statistics']//div[3]//span[2]"
-            );
-        }
-        public static Component getOddCounter(String dealsOrTable) {
-            return new Component(
-                    "Odd Counter in Dealer Table of " + dealsOrTable,
-                    "Label",
-                    "Game Lobby Page",
-                    "//p[contains(text(),'" + dealsOrTable + "')]/ancestor::div[2]" +
-                            "//div[@class='sicbo_line_statistics']//div[4]//span[2]"
-            );
-        }
-        public static Component getEvenCounter(String dealsOrTable) {
-            return new Component(
-                    "Even Counter in Dealer Table of " + dealsOrTable,
-                    "Label",
-                    "Game Lobby Page",
-                    "//p[contains(text(),'" + dealsOrTable + "')]/ancestor::div[2]" +
-                            "//div[@class='sicbo_line_statistics']//div[5]//span[2]"
             );
         }
     }

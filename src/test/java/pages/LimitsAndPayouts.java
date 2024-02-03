@@ -18,7 +18,7 @@ public class LimitsAndPayouts {
     }
 
     /***************************************************************************************************************
-     * These are the label components on the LimitsAndPayouts Page.
+     * These are the label components on the Limits And Payouts Page.
      ***************************************************************************************************************/
 
     public static class Label {

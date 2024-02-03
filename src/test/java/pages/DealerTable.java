@@ -9,12 +9,6 @@ public class DealerTable {
      ***************************************************************************************************************/
 
     public static class Container {
-        public static Component LiveSicBoRevamp = new Component(
-                "Live Sic Bo Revamp",
-                "Container",
-                "Dealer Table Page",
-                "//div[@class='sic_bo']"
-        );
         public static Component Announcement = new Component(
                 "Announcement",
                 "Container",
@@ -180,8 +174,8 @@ public class DealerTable {
                 "Dealer Table Page",
                 "//p[@id='showTimer']"
         );
-        public static Component PlaceYourBets = new Component(
-                "Place Your Bets",
+        public static Component PlaceYourBetsPlease = new Component(
+                "Place your bets please",
                 "Label",
                 "Dealer Table Page",
                 "//p[contains(normalize-space(), 'Place your bets please')]"
@@ -193,7 +187,7 @@ public class DealerTable {
                 "//p[@id='showDealingWording']"
         );
         public static Component NoMoreBets = new Component(
-                "No More Bets",
+                "No more bets",
                 "Label",
                 "Dealer Table Page",
                 "//p[contains(normalize-space(), 'No more bets')]"
@@ -241,31 +235,31 @@ public class DealerTable {
                 "//div[@class='sicbo_line_roadmap']//li[1]//p[1]"
         );
         public static Component BetsAccepted = new Component(
-                "Bets Accepted",
+                "Bets accepted.",
                 "Label",
                 "Dealer Table Page",
                 "//p[contains(normalize-space(), 'Bets accepted.')]"
         );
         public static Component ConfirmNow = new Component(
-                "Confirm Now",
+                "Confirm now?",
                 "Label",
                 "Dealer Table Page",
                 "//p[@class='popUp_title']"
         );
-        public static Component BetIsClosing = new Component(
-                "Bet Is Closing",
+        public static Component BettingIsClosing = new Component(
+                "Betting is closing.",
                 "Label",
                 "Dealer Table Page",
                 "//div[@class='popUp']//p[contains(normalize-space(), 'Betting is closing.')]"
         );
-        public static Component YouWonValue = new Component(
-                "You Won Value",
+        public static Component WonValue = new Component(
+                "Won Value",
                 "Label",
                 "Dealer Table Page",
                 "//p[@class='you_won_amount_text']"
         );
-        public static Component YouWonText = new Component(
-                "You Won Text",
+        public static Component WonText = new Component(
+                "Won Text",
                 "Label",
                 "Dealer Table Page",
                 "//div[@class='you_won_title']"
@@ -276,20 +270,20 @@ public class DealerTable {
                 "Dealer Table Page",
                 "//p[contains(normalize-space(), 'Give it a try?')]"
         );
-        public static Component ExceedTheMaxBet = new Component(
-                "Exceed Limit Label",
+        public static Component ExceededTheMaxBet = new Component(
+                "You've exceeded the max bet amount.",
                 "Label",
                 "Dealer Table Page",
                 "//p[contains(normalize-space(), 'exceeded the max bet amount.')]"
         );
         public static Component YourBetsAreBeingSettled = new Component(
-                "Your Bets Are Being Settled",
+                "Your bets are being settled right now. Please wait.",
                 "Label",
                 "Dealer Table Page",
                 "//p[contains(text(),'Your bets are being settled right now. Please wait.')]"
         );
-        public static Component RememberedYourChips = new Component(
-                "Remembered Your Chips",
+        public static Component RememberedYourChipSettings = new Component(
+                "Remembered your chip settings.",
                 "Label",
                 "Dealer Table Page",
                 "//p[contains(text(),'remembered your chip settings.')]"

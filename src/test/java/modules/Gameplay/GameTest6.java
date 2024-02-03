@@ -14,7 +14,7 @@ public class GameTest6 extends Gameplay {
         System.out.println("Test Case: 6");
         System.out.println("Actual Results: ");
 
-        verifyDisplay(DealerTable.Label.BetIsClosing);
+        verifyDisplay(DealerTable.Label.BettingIsClosing);
         verifyDisplay(DealerTable.Button.PopUpConfirm);
         verifyDisplay(DealerTable.Button.PopUpNotNow);
 

@@ -33,12 +33,6 @@ public class Menu {
                 "Menu Page",
                 "//div[@data-gtm='Btn_ClickSettings']"
         );
-        public static Component MenuOptions = new Component(
-                "List of Menu Options",
-                "Label",
-                "Menu Page",
-                "//div[@class='menu open']//div//a"
-        );
     }
 
     /***************************************************************************************************************
