@@ -19,13 +19,14 @@ public class Navigation {
             Accounts.setEnvironment(Environment.PRODUCTION);
             NavigationHandler.goTo(Accounts.getMobileUrl());
             EventHandler.select(Login.Dropdown.Language, "English");
-            EventHandler.click(Login.Thumbnail.LiveCasino);
             WaitHandler.waitUrlToBe(Accounts.getMobileUrl(), 5);
+            EventHandler.click(Login.Thumbnail.LiveCasino);
             WaitHandler.waitVisibility(Login.Container.LoginModal, 5);
             EventHandler.sendKeys(Login.TextBox.Username, Accounts.getUsername());
             EventHandler.sendKeys(Login.TextBox.Password, Accounts.getPassword());
             EventHandler.click(Login.Button.Submit);
-            if (ConditionHandler.isUrlContains("/roulette")) {
+            WaitHandler.wait(5);
+            if (ConditionHandler.isUrlContains("/sicbo")) {
                 EventHandler.click(DealerTable.Button.SkipWelcome, HandleCollection.WithException);
                 EventHandler.click(DealerTable.Button.Back, HandleCollection.WithException);
                 EventHandler.click(GameLobby.Button.Back, HandleCollection.WithException);
