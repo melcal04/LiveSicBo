@@ -20,11 +20,14 @@ public class Navigation {
             NavigationHandler.goTo(Accounts.getMobileUrl());
             EventHandler.select(Login.Dropdown.Language, "English");
             WaitHandler.waitUrlToBe(Accounts.getMobileUrl(), 5);
+
+            WaitHandler.wait(5);
             EventHandler.click(Login.Thumbnail.LiveCasino);
             WaitHandler.waitVisibility(Login.Container.LoginModal, 5);
             EventHandler.sendKeys(Login.TextBox.Username, Accounts.getUsername());
             EventHandler.sendKeys(Login.TextBox.Password, Accounts.getPassword());
             EventHandler.click(Login.Button.Submit);
+
             WaitHandler.wait(5);
             if (ConditionHandler.isUrlContains("/sicbo")) {
                 EventHandler.click(DealerTable.Button.SkipWelcome, HandleCollection.WithException);
