@@ -13,10 +13,14 @@ public class BetInfoTest2 extends BetInformation {
     static String betOption = BettingOption.EVEN;
 
     public static void placeBetUntilLose() {
+        boolean isError = true;
         do {
-            placeBet(betOption);
-            waitRoundResult();
-        } while (RoundCondition.isEvenWin(roundResult));
+            try {
+                placeBet(betOption);
+                waitRoundResult();
+                isError = false;
+            } catch (Exception e) { PrintHandler.printError("Failed to place a bet"); }
+        } while (isError || RoundCondition.isEvenWin(roundResult));
     }
 
     public static void verify() {

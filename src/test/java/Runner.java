@@ -28,7 +28,7 @@ import org.junit.runner.RunWith;
                 tags = "@Payout or @BetInformation or @Gameplay or @Functionality or @ResultAndStatistics or @UserInterface"
 
                 // ! Re Run
-                //tags = "@GameplayTest1 or @GameplayTest15 or @FunctionalityTest26"
+                //tags = "@BetInformationTest1 or @GameplayTest15"
 
                 // ! Maintenance
                 //tags = "@Maintenance"

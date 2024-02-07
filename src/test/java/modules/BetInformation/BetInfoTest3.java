@@ -14,18 +14,24 @@ public class BetInfoTest3  extends BetInformation {
     static int[] twoDiceCombo = new int[]{1, 2};
 
     public static void placeBet() {
-        waitBettingPhase(30, false);
-        WaitHandler.waitInvisibility(DealerTable.Label.PlaceYourBetsPlease, 150);
-        EventHandler.click(DealerTable.BettingOption.getSingleDice(singleDiceBet));
-        EventHandler.click(DealerTable.BettingOption.getSpecificDouble(specificDouble));
-        EventHandler.click(DealerTable.BettingOption.getSpecificTriple(specificTriple));
-        EventHandler.click(DealerTable.BettingOption.getThreeDiceTotal(threeDiceTotal));
-        EventHandler.click(DealerTable.BettingOption.getTwoDiceCombo(twoDiceCombo[0], twoDiceCombo[1]));
-        EventHandler.click(DealerTable.BettingOption.getMainBet(smallBet));
-        EventHandler.click(DealerTable.BettingOption.getMainBet(oddBet));
-        EventHandler.click(DealerTable.BettingOption.getMainBet(tripleBet));
-        EventHandler.click(DealerTable.Button.Confirm);
-        waitRoundResult();
+        boolean isError = true;
+        do {
+            try {
+                waitBettingPhase(30, false);
+                WaitHandler.waitInvisibility(DealerTable.Label.PlaceYourBetsPlease, 150);
+                EventHandler.click(DealerTable.BettingOption.getSingleDice(singleDiceBet));
+                EventHandler.click(DealerTable.BettingOption.getSpecificDouble(specificDouble));
+                EventHandler.click(DealerTable.BettingOption.getSpecificTriple(specificTriple));
+                EventHandler.click(DealerTable.BettingOption.getThreeDiceTotal(threeDiceTotal));
+                EventHandler.click(DealerTable.BettingOption.getTwoDiceCombo(twoDiceCombo[0], twoDiceCombo[1]));
+                EventHandler.click(DealerTable.BettingOption.getMainBet(smallBet));
+                EventHandler.click(DealerTable.BettingOption.getMainBet(oddBet));
+                EventHandler.click(DealerTable.BettingOption.getMainBet(tripleBet));
+                EventHandler.click(DealerTable.Button.Confirm);
+                waitRoundResult();
+                isError = false;
+            } catch (Exception e) { PrintHandler.printError("Failed to place a bet"); }
+        } while (isError);
     }
 
     public static void verify() {
