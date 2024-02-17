@@ -17,7 +17,7 @@ public class PayoutTest18 extends Payout implements PayoutCase {
     public int getTestCase() { return testCase; }
 
     public void setBetOption() {
-        if (!DataTypeHandler.findInArray(testCase, testCaseList)) return;
+        if (!DataTypeHandler.find(testCase, testCaseList)) return;
 
         for (int i = 1; i <= betOption; i++) {
             for (int j = 1; j <= betOption; j++) {
@@ -27,7 +27,7 @@ public class PayoutTest18 extends Payout implements PayoutCase {
     }
 
     public void getBetOption() {
-        if (!DataTypeHandler.findInArray(testCase, testCaseList)) return;
+        if (!DataTypeHandler.find(testCase, testCaseList)) return;
 
         int index = 0;
         for (int i = 1; i <= betOption; i++) {
@@ -38,7 +38,7 @@ public class PayoutTest18 extends Payout implements PayoutCase {
     }
 
     public void computeTestCase(int[] roundResult) {
-        if (!DataTypeHandler.findInArray(testCase, testCaseList)) return;
+        if (!DataTypeHandler.find(testCase, testCaseList)) return;
 
         int index = 0;
         for (int i = 1; i <= betOption; i++) {
@@ -57,7 +57,7 @@ public class PayoutTest18 extends Payout implements PayoutCase {
     }
 
     public void saveTestCase(int[] roundResult) {
-        if (!DataTypeHandler.findInArray(testCase, testCaseList)) return;
+        if (!DataTypeHandler.find(testCase, testCaseList)) return;
         if (!isTwoDiceComboWin) return;
 
         String currentRoundResult = DataTypeHandler.toString(roundResult);

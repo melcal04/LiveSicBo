@@ -16,25 +16,25 @@ public class PayoutTest16 extends Payout implements PayoutCase {
     public int getTestCase() { return testCase; }
 
     public void setBetOption() {
-        if (!DataTypeHandler.findInArray(testCase, testCaseList)) return;
-        if (DataTypeHandler.findInArray(14, testCaseList)) return;
-        if (DataTypeHandler.findInArray(15, testCaseList)) return;
+        if (!DataTypeHandler.find(testCase, testCaseList)) return;
+        if (DataTypeHandler.find(14, testCaseList)) return;
+        if (DataTypeHandler.find(15, testCaseList)) return;
 
         for (int i = 0; i < betOption; i++)
             EventHandler.click(DealerTable.BettingOption.getSingleDice(i + 1));
     }
 
     public void getBetOption() {
-        if (!DataTypeHandler.findInArray(testCase, testCaseList)) return;
+        if (!DataTypeHandler.find(testCase, testCaseList)) return;
 
         for (int i = 0; i < betOption; i++)
             chipValueList[i] = getChipValue(DealerTable.BettingChip.getSingleDice(i + 1));
     }
 
     public void computeTestCase(int[] roundResult) {
-        if (!DataTypeHandler.findInArray(testCase, testCaseList) &&
-                !DataTypeHandler.findInArray(14, testCaseList) &&
-                !DataTypeHandler.findInArray(15, testCaseList)) return;
+        if (!DataTypeHandler.find(testCase, testCaseList) &&
+                !DataTypeHandler.find(14, testCaseList) &&
+                !DataTypeHandler.find(15, testCaseList)) return;
         if (!RoundCondition.isAnyTripleWin(roundResult)) return;
 
         for (int i = 0; i < betOption; i++) {
@@ -48,7 +48,7 @@ public class PayoutTest16 extends Payout implements PayoutCase {
     }
 
     public void saveTestCase(int[] roundResult) {
-        if (!DataTypeHandler.findInArray(testCase, testCaseList)) return;
+        if (!DataTypeHandler.find(testCase, testCaseList)) return;
         if (!RoundCondition.isAnyTripleWin(roundResult)) return;
 
         String currentRoundResult = DataTypeHandler.toString(roundResult);

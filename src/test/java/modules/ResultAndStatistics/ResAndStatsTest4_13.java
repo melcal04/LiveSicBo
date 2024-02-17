@@ -13,34 +13,36 @@ import java.util.Arrays;
 
 public class ResAndStatsTest4_13 extends ResAndStats implements ResAndStatsCase {
 
-    public static final int testCase = 4, division = 13;
-    private int[] oldColdNumberList, oldColdCounterList, coldNumberList = new int[5], coldCounterList = new int[5];
+    private static final int testCase = 4, division = 13;
+    private int[] oldColdNumberList = new int[4], oldColdCounterList = new int[4], coldNumberList = new int[4], actualColdCounterList = new int[4];
+    private final int[] expectedColdCounterList = new int[4];
 
     public int getTestCase() { return testCase; }
 
     public int getDivision() { return division; }
 
     public void setStatistics() {
-        if (!DataTypeHandler.findInArray(testCase, testCaseList)) return;
-        if (!DataTypeHandler.findInArray(division, divisionList)) return;
+        if (!DataTypeHandler.find(testCase, testCaseList)) return;
+        if (!DataTypeHandler.find(division, divisionList)) return;
 
         oldColdNumberList = Arrays.copyOf(coldNumberList, coldNumberList.length);
-        oldColdCounterList = Arrays.copyOf(coldCounterList, coldCounterList.length);
+        oldColdCounterList = Arrays.copyOf(actualColdCounterList, actualColdCounterList.length);
         coldNumberList = GetHandler.getIntArray(Statistics.Label.ColdNumbers);
-        coldCounterList = GetHandler.getIntArray(Statistics.Label.ColdCounters);
+        actualColdCounterList = GetHandler.getIntArray(Statistics.Label.ColdCounters);
+        for (int i = 0; i < coldNumberList.length; i++)
+            expectedColdCounterList[i] = getSize(Statistics.Method.getColdResults(coldNumberList[i]));
     }
 
     public void saveTestCase(int[] roundResult) {
-        if (!DataTypeHandler.findInArray(testCase, testCaseList)) return;
-        if (!DataTypeHandler.findInArray(division, divisionList)) return;
-        if (DataTypeHandler.findInArray(DataTypeHandler.sum(roundResult), oldColdNumberList)) return;
+        if (!DataTypeHandler.find(testCase, testCaseList)) return;
+        if (!DataTypeHandler.find(division, divisionList)) return;
+        if (DataTypeHandler.find(DataTypeHandler.sum(roundResult), oldColdNumberList)) return;
 
         String currentRoundResult = DataTypeHandler.toString(roundResult);
         String oldResult = getResultFromArray(oldColdNumberList, oldColdCounterList);
-        String expectedResult = "All Counters in Cold Numbers Must Increase";
-        String actualResult = getResultFromArray(coldNumberList, coldCounterList);
+        String expectedResult = getResultFromArray(coldNumberList, expectedColdCounterList);
+        String actualResult = getResultFromArray(coldNumberList, actualColdCounterList);
 
-        System.out.println("    - " + expectedResult + ": " + oldResult + " --> " + actualResult);
         ResultHandler.setTestResult(testCase, division, currentRoundResult, expectedResult, actualResult, tableInfo, oldResult);
         divisionList = DataTypeHandler.removeFromArray(division, divisionList);
         if (divisionList.length != 0) return;
@@ -59,32 +61,34 @@ public class ResAndStatsTest4_13 extends ResAndStats implements ResAndStatsCase 
         System.out.println("Expected Result: " + result.getExpectedResult());
 
         String message = "Actual Result: " + result.getOtherInfo() + " --> " + result.getActualResult();
+        AssertHandler.assertTrue(isPassed(result), message, message);
+
+        System.out.println();
+    }
+
+    private static boolean isPassed(TestResult result) {
         int[][] actualResult = Arrays.copyOf(getArrayFromResult(result.getActualResult()), getArrayFromResult(result.getActualResult()).length);
         int[] actualNumberResultList = actualResult[0];
         int[] actualCounterResultList = actualResult[1];
+
+        int[][] expectedResult = Arrays.copyOf(getArrayFromResult(result.getExpectedResult()), getArrayFromResult(result.getExpectedResult()).length);
+        int[] expectedNumberResultList = expectedResult[0];
+        int[] expectedCounterResultList = expectedResult[1];
+
         int[][] oldResult = Arrays.copyOf(getArrayFromResult(result.getOtherInfo()), getArrayFromResult(result.getOtherInfo()).length);
         int[] oldNumberResultList = oldResult[0];
         int[] oldCounterResultList = oldResult[1];
 
-        boolean isPassed = true;
         for (byte i = 0; i < actualNumberResultList.length; i++) {
             int actualIndex = DataTypeHandler.getIndex(actualNumberResultList[i], actualNumberResultList);
             int oldIndex = DataTypeHandler.getIndex(oldNumberResultList[i], oldNumberResultList);
-            if (oldCounterResultList[oldIndex] == 999) {
-                if (actualCounterResultList[actualIndex] != 999) {
-                    isPassed = false;
-                    break;
-                }
-            } else {
-                if (actualCounterResultList[actualIndex] <= oldCounterResultList[oldIndex]) {
-                    isPassed = false;
-                    break;
-                }
-            }
+            int expectedIndex = DataTypeHandler.getIndex(expectedNumberResultList[i], expectedNumberResultList);
+            if (oldCounterResultList[oldIndex] == 999 && actualCounterResultList[actualIndex] != 999) return false;
+            if (actualCounterResultList[actualIndex] <= oldCounterResultList[oldIndex]) return false;
+            if (expectedCounterResultList[expectedIndex] != actualCounterResultList[actualIndex]) return false;
         }
-        AssertHandler.assertTrue(isPassed, message, message);
 
-        System.out.println();
+        return true;
     }
 
 }

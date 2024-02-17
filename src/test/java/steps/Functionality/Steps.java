@@ -117,6 +117,11 @@ public class Steps {
             case "The Functionality After Re-clicking The Show/Hide Balance Button" -> FuncTest2.verify(false);
             case "The Functionality After Clicking Each Table Limit Button" -> FuncTest3.verify();
             case "The Functionality After Clicking The Back Button On The Game Lobby" -> FuncTest4.verify();
+            case "The Functionality Of The Big Counter" -> FuncTest5.verify();
+            case "The Functionality Of The Small Counter" -> FuncTest6.verify();
+            case "The Functionality Of The Triple Counter" -> FuncTest7.verify();
+            case "The Functionality Of The Odd Counter" -> FuncTest8.verify();
+            case "The Functionality Of The Even Counter" -> FuncTest9.verify();
             case "The Functionality After Clicking The Menu Button" -> FuncTest11.verify();
             case "The Functionality After Clicking The My Bets In The Menu" -> FuncTest12.verify();
             case "The Functionality Of Settled Round In My Bets In The Menu" -> FuncTest13.verify();

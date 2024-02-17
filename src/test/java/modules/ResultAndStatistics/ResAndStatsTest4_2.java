@@ -11,38 +11,38 @@ import utilities.settings.Constants;
 
 public class ResAndStatsTest4_2 extends ResAndStats implements ResAndStatsCase {
 
-    public static final int testCase = 4, division = 2;
-    private double oldTripleSBPercentage = 0.0, tripleSBPercentage = 0.0;
-    private double oldTripleOEPercentage = 0.0, tripleOEPercentage = 0.0;
+    private static final int testCase = 4, division = 2;
+    private double oldTripleSBPercentage = 0.0, expectedTriplePercentage = 0.0, actualTripleSBPercentage = 0.0;
+    private double oldTripleOEPercentage = 0.0, actualTripleOEPercentage = 0.0;
+    private static int size;
 
     public int getTestCase() { return testCase; }
 
     public int getDivision() { return division; }
 
     public void setStatistics() {
-        if (!DataTypeHandler.findInArray(testCase, testCaseList)) return;
-        if (!DataTypeHandler.findInArray(division, divisionList)) return;
+        if (!DataTypeHandler.find(testCase, testCaseList)) return;
+        if (!DataTypeHandler.find(division, divisionList)) return;
 
-        oldTripleSBPercentage = tripleSBPercentage;
-        tripleSBPercentage = getPercentage(Statistics.Label.TripleSBPercentage);
-        oldTripleOEPercentage = tripleOEPercentage;
-        tripleOEPercentage = getPercentage(Statistics.Label.TripleOEPercentage);
+        size = getSize(Statistics.Container.TripleResults);
+        expectedTriplePercentage = Math.round((((double) size / 2) / totalResultHistory) * 100);
+        oldTripleSBPercentage = actualTripleSBPercentage;
+        actualTripleSBPercentage = getPercentage(Statistics.Label.TripleSBPercentage);
+        oldTripleOEPercentage = actualTripleOEPercentage;
+        actualTripleOEPercentage = getPercentage(Statistics.Label.TripleOEPercentage);
     }
 
     public void saveTestCase(int[] roundResult) {
-        if (!DataTypeHandler.findInArray(testCase, testCaseList)) return;
-        if (!DataTypeHandler.findInArray(division, divisionList)) return;
+        if (!DataTypeHandler.find(testCase, testCaseList)) return;
+        if (!DataTypeHandler.find(division, divisionList)) return;
         if (!RoundCondition.isAnyTripleWin(roundResult)) return;
-        if (oldTripleSBPercentage == tripleSBPercentage) return;
-        if (oldTripleOEPercentage == tripleOEPercentage) return;
 
         String currentRoundResult = DataTypeHandler.toString(roundResult);
         String oldResult = oldTripleSBPercentage + "-" + oldTripleOEPercentage;
-        String expectedResult = "Any Triple Percentage Must Increase";
-        String actualResult = tripleSBPercentage + "-" + tripleOEPercentage;
+        String expectedResult = Double.toString(expectedTriplePercentage);
+        String actualResult = actualTripleSBPercentage + "-" + actualTripleOEPercentage;
 
-        System.out.println("    - " + expectedResult + ": " + oldResult + " --> " + actualResult);
-        ResultHandler.setTestResult(testCase, division, currentRoundResult, expectedResult, actualResult, tableInfo, oldResult);
+        ResultHandler.setTestResult(testCase, division, currentRoundResult, expectedResult, actualResult, (tableInfo + " " + totalResultHistory + " " + size), oldResult);
         divisionList = DataTypeHandler.removeFromArray(division, divisionList);
         if (divisionList.length != 0) return;
         testCaseList = DataTypeHandler.removeFromArray(testCase, testCaseList);
@@ -63,9 +63,9 @@ public class ResAndStatsTest4_2 extends ResAndStats implements ResAndStatsCase {
             String oldPercentageText = result.getOtherInfo().split("-")[i];
             String actualPercentageText = result.getActualResult().split("-")[i];
             String message = "Actual Result: " + oldPercentageText + " --> " + actualPercentageText;
+            double expectedPercentage = Double.parseDouble(result.getExpectedResult());
             double actualPercentage = Double.parseDouble(actualPercentageText);
-            double oldPercentage = Double.parseDouble(oldPercentageText);
-            AssertHandler.assertTrue(actualPercentage > oldPercentage, message, message);
+            AssertHandler.assertEquals(expectedPercentage, actualPercentage, message, message);
         }
 
         System.out.println();

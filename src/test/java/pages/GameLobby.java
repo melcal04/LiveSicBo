@@ -170,6 +170,90 @@ public class GameLobby {
                             "[position() > last() - 12]//div[4]"
             );
         }
+        public static Component getBigCounter(String dealsOrTable) {
+            return new Component(
+                    "Big Counter in Dealer Table of " + dealsOrTable,
+                    "Label",
+                    "Game Lobby Page",
+                    "//p[contains(text(),'" + dealsOrTable + "')]/ancestor::div[2]" +
+                            "//div[@class='sicbo_line_statistics']//div[1]//span[2]");
+        }
+        public static Component getSmallCounter(String dealsOrTable) {
+            return new Component(
+                    "Small Counter in Dealer Table of " + dealsOrTable,
+                    "Label",
+                    "Game Lobby Page",
+                    "//p[contains(text(),'" + dealsOrTable + "')]/ancestor::div[2]" +
+                            "//div[@class='sicbo_line_statistics']//div[2]//span[2]"
+            );
+        }
+        public static Component getTripleCounter(String dealsOrTable) {
+            return new Component(
+                    "Triple Counter in Dealer Table of " + dealsOrTable,
+                    "Label",
+                    "Game Lobby Page",
+                    "//p[contains(text(),'" + dealsOrTable + "')]/ancestor::div[2]" +
+                            "//div[@class='sicbo_line_statistics']//div[3]//span[2]"
+            );
+        }
+        public static Component getOddCounter(String dealsOrTable) {
+            return new Component(
+                    "Odd Counter in Dealer Table of " + dealsOrTable,
+                    "Label",
+                    "Game Lobby Page",
+                    "//p[contains(text(),'" + dealsOrTable + "')]/ancestor::div[2]" +
+                            "//div[@class='sicbo_line_statistics']//div[4]//span[2]"
+            );
+        }
+        public static Component getEvenCounter(String dealsOrTable) {
+            return new Component(
+                    "Even Counter in Dealer Table of " + dealsOrTable,
+                    "Label",
+                    "Game Lobby Page",
+                    "//p[contains(text(),'" + dealsOrTable + "')]/ancestor::div[2]" +
+                            "//div[@class='sicbo_line_statistics']//div[5]//span[2]"
+            );
+        }
+        public static Component getBigResults(String tableName) {
+            return new Component(
+                    "Big Results",
+                    "Container",
+                    "Game Lobby Page",
+                    "(//p[contains(text(),'" + tableName + "')]/ancestor::div[2])//li//div[contains(@class, 'text text_')][normalize-space()='B']"
+            );
+        }
+        public static Component getSmallResults(String tableName) {
+            return new Component(
+                    "Small Results",
+                    "Container",
+                    "Game Lobby Page",
+                    "(//p[contains(text(),'" + tableName + "')]/ancestor::div[2])//li//div[contains(@class, 'text text_')][normalize-space()='S']"
+            );
+        }
+        public static Component getTripleResults(String tableName) {
+            return new Component(
+                    "Triple Results",
+                    "Container",
+                    "Game Lobby Page",
+                    "(//p[contains(text(),'" + tableName + "')]/ancestor::div[2])//li//div[contains(@class, 'text text_')][normalize-space()='T']"
+            );
+        }
+        public static Component getOddResults(String tableName) {
+            return new Component(
+                    "Odd Results",
+                    "Container",
+                    "Game Lobby Page",
+                    "(//p[contains(text(),'" + tableName + "')]/ancestor::div[2])//li//div[contains(@class, 'text text_')][normalize-space()='O']"
+            );
+        }
+        public static Component getEvenResults(String tableName) {
+            return new Component(
+                    "Even Results",
+                    "Container",
+                    "Game Lobby Page",
+                    "(//p[contains(text(),'" + tableName + "')]/ancestor::div[2])//li//div[contains(@class, 'text text_')][normalize-space()='E']"
+            );
+        }
     }
 
 }

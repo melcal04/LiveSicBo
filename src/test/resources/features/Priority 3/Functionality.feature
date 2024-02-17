@@ -29,6 +29,26 @@ Feature: Functionality
     When I Click "The Back Button On Lobby"
     Then I Verify "The Functionality After Clicking The Back Button On The Game Lobby"
 
+  @FunctionalityTest5
+  Scenario: FT Test 5: Checking The Functionality Of The Big Counter
+    Then I Verify "The Functionality Of The Big Counter"
+
+  @FunctionalityTest6
+  Scenario: FT Test 6: Checking The Functionality Of The Small Counter
+    Then I Verify "The Functionality Of The Small Counter"
+
+  @FunctionalityTest7
+  Scenario: FT Test 7: Checking The Functionality Of The Triple Counter
+    Then I Verify "The Functionality Of The Triple Counter"
+
+  @FunctionalityTest8
+  Scenario: FT Test 8: Checking The Functionality Of The Odd Counter
+    Then I Verify "The Functionality Of The Odd Counter"
+
+  @FunctionalityTest9
+  Scenario: FT Test 9: Checking The Functionality Of The Even Counter
+    Then I Verify "The Functionality Of The Even Counter"
+
   @FunctionalityTest11
   Scenario: FT Test 11: Checking The Functionality Of The Menu Button
     When I Enter The Dealer Table

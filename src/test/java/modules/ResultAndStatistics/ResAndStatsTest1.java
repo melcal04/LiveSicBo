@@ -18,13 +18,13 @@ public class ResAndStatsTest1 extends ResAndStats implements ResAndStatsCase {
     public int getDivision() { return 0; }
 
     public void setStatistics() {
-        if (!DataTypeHandler.findInArray(testCase, testCaseList)) return;
+        if (!DataTypeHandler.find(testCase, testCaseList)) return;
 
         actualResult = DataTypeHandler.toString(getActualLatestRoundResult());
     }
 
     public void saveTestCase(int[] roundResult) {
-        if (!DataTypeHandler.findInArray(testCase, testCaseList)) return;
+        if (!DataTypeHandler.find(testCase, testCaseList)) return;
         if (!RoundCondition.isBigWin(roundResult)) return;
 
         String currentRoundResult = DataTypeHandler.toString(roundResult);

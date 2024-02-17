@@ -11,34 +11,35 @@ import utilities.settings.Constants;
 
 public class ResAndStatsTest4_1 extends ResAndStats implements ResAndStatsCase {
 
-    public static final int testCase = 4, division = 1;
-    private double oldBigPercentage = 0.0, bigPercentage = 0.0;
+    private static final int testCase = 4, division = 1;
+    private double oldBigPercentage = 0.0, expectedBigPercentage = 0.0, actualBigPercentage = 0.0;
+    private static int size;
 
     public int getTestCase() { return testCase; }
 
     public int getDivision() { return division; }
 
     public void setStatistics() {
-        if (!DataTypeHandler.findInArray(testCase, testCaseList)) return;
-        if (!DataTypeHandler.findInArray(division, divisionList)) return;
+        if (!DataTypeHandler.find(testCase, testCaseList)) return;
+        if (!DataTypeHandler.find(division, divisionList)) return;
 
-        oldBigPercentage = bigPercentage;
-        bigPercentage = getPercentage(Statistics.Label.BigPercentage);
+        size = getSize(Statistics.Container.BigResults);
+        expectedBigPercentage = Math.round(((float) size / totalResultHistory) * 100);
+        oldBigPercentage = actualBigPercentage;
+        actualBigPercentage = getPercentage(Statistics.Label.BigPercentage);
     }
 
     public void saveTestCase(int[] roundResult) {
-        if (!DataTypeHandler.findInArray(testCase, testCaseList)) return;
-        if (!DataTypeHandler.findInArray(division, divisionList)) return;
+        if (!DataTypeHandler.find(testCase, testCaseList)) return;
+        if (!DataTypeHandler.find(division, divisionList)) return;
         if (!RoundCondition.isBigWin(roundResult)) return;
-        if (oldBigPercentage == bigPercentage) return;
 
         String currentRoundResult = DataTypeHandler.toString(roundResult);
         String oldResult = Double.toString(oldBigPercentage);
-        String expectedResult = "Big Percentage Must Increase";
-        String actualResult = Double.toString(bigPercentage);
+        String expectedResult = Double.toString(expectedBigPercentage);
+        String actualResult = Double.toString(actualBigPercentage);
 
-        System.out.println("    - " + expectedResult + ": " + oldResult + " --> " + actualResult);
-        ResultHandler.setTestResult(testCase, division, currentRoundResult, expectedResult, actualResult, tableInfo, oldResult);
+        ResultHandler.setTestResult(testCase, division, currentRoundResult, expectedResult, actualResult, (tableInfo + " " + totalResultHistory + " " + size), oldResult);
         divisionList = DataTypeHandler.removeFromArray(division, divisionList);
         if (divisionList.length != 0) return;
         testCaseList = DataTypeHandler.removeFromArray(testCase, testCaseList);
@@ -56,9 +57,9 @@ public class ResAndStatsTest4_1 extends ResAndStats implements ResAndStatsCase {
         System.out.println("Expected Result: " + result.getExpectedResult());
 
         String message = "Actual Result: " + result.getOtherInfo() + " --> " + result.getActualResult();
+        double expectedPercentage = Double.parseDouble(result.getExpectedResult());
         double actualPercentage = Double.parseDouble(result.getActualResult());
-        double oldPercentage = Double.parseDouble(result.getOtherInfo());
-        AssertHandler.assertTrue(actualPercentage > oldPercentage, message, message);
+        AssertHandler.assertEquals(expectedPercentage, actualPercentage, message, message);
 
         System.out.println();
     }

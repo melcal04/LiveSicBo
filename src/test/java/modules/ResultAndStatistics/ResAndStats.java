@@ -15,6 +15,7 @@ public class ResAndStats extends TestMethod {
 
     protected static int[] testCaseList, divisionList;
     protected static String tableInfo;
+    protected static double totalResultHistory;
 
     protected static String[] getActualLatestRoundResult() {
         List<WebElement> elements = GetHandler.getElements(Statistics.Label.LatestRoundResult);

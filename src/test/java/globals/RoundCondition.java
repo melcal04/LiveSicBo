@@ -11,7 +11,7 @@ public class RoundCondition {
      ***************************************************************************************************************/
 
     public static boolean isSingleDiceWin(int[] result, int dice) {
-        return DataTypeHandler.findInArray(dice, result);
+        return DataTypeHandler.find(dice, result);
     }
 
     public static boolean isSpecificDoubleWin(int[] result, int dice) {

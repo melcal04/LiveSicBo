@@ -17,21 +17,21 @@ public class PayoutTest19 extends Payout implements PayoutCase {
     public int getTestCase() { return testCase; }
 
     public void setBetOption() {
-        if (!DataTypeHandler.findInArray(testCase, testCaseList)) return;
+        if (!DataTypeHandler.find(testCase, testCaseList)) return;
 
         for (int i = 0; i < betOption; i++)
             EventHandler.click(DealerTable.BettingOption.getSpecificDouble(i + 1));
     }
 
     public void getBetOption() {
-        if (!DataTypeHandler.findInArray(testCase, testCaseList)) return;
+        if (!DataTypeHandler.find(testCase, testCaseList)) return;
 
         for (int i = 0; i < betOption; i++)
             chipValueList[i] = getChipValue(DealerTable.BettingChip.getSpecificDouble(i + 1));
     }
 
     public void computeTestCase(int[] roundResult) {
-        if (!DataTypeHandler.findInArray(testCase, testCaseList)) return;
+        if (!DataTypeHandler.find(testCase, testCaseList)) return;
         if (!RoundCondition.isAnyDoubleWin(roundResult)) return;
 
         for (int i = 0; i < betOption; i++) {
@@ -45,7 +45,7 @@ public class PayoutTest19 extends Payout implements PayoutCase {
     }
 
     public void saveTestCase(int[] roundResult) {
-        if (!DataTypeHandler.findInArray(testCase, testCaseList)) return;
+        if (!DataTypeHandler.find(testCase, testCaseList)) return;
         if (!RoundCondition.isAnyDoubleWin(roundResult)) return;
         if (!isSpecificDoubleWin) return;
 

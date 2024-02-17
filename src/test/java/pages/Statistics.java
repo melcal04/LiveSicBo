@@ -7,6 +7,7 @@ public class Statistics {
     /***************************************************************************************************************
      * These are the container components on the Statistics Page.
      ***************************************************************************************************************/
+
     public static class Container {
         public static Component Statistics = new Component(
                 "Statistics",
@@ -14,11 +15,84 @@ public class Statistics {
                 "Statistics Page",
                 "//div[@class='statistics']"
         );
+        public static Component AllResults = new Component(
+                "All Results",
+                "Container",
+                "Statistics Page",
+                "//li[@class='result separate-style']"
+        );
+        public static Component BigResults = new Component(
+                "Big Results",
+                "Container",
+                "Statistics Page",
+                "//li[@class='result separate-style']//div[contains(@class, 'text text_')][normalize-space()='B']"
+        );
+        public static Component SmallResults = new Component(
+                "Small Results",
+                "Container",
+                "Statistics Page",
+                "//li[@class='result separate-style']//div[contains(@class, 'text text_')][normalize-space()='S']"
+        );
+        public static Component TripleResults = new Component(
+                "Triple Results",
+                "Container",
+                "Statistics Page",
+                "//li[@class='result separate-style']//div[contains(@class, 'text text_')][normalize-space()='T']"
+        );
+        public static Component OddResults = new Component(
+                "Odd Results",
+                "Container",
+                "Statistics Page",
+                "//li[@class='result separate-style']//div[contains(@class, 'text text_')][normalize-space()='O']"
+        );
+        public static Component EvenResults = new Component(
+                "Even Results",
+                "Container",
+                "Statistics Page",
+                "//li[@class='result separate-style']//div[contains(@class, 'text text_')][normalize-space()='E']"
+        );
+        public static Component Dice1Results = new Component(
+                "Dice 1 Results",
+                "Container",
+                "Statistics Page",
+                "//li[@class='result separate-style']//div[contains(@class, 'dice dice_1')]"
+        );
+        public static Component Dice2Results = new Component(
+                "Dice 2 Results",
+                "Container",
+                "Statistics Page",
+                "//li[@class='result separate-style']//div[contains(@class, 'dice dice_2')]"
+        );
+        public static Component Dice3Results = new Component(
+                "Dice 3 Results",
+                "Container",
+                "Statistics Page",
+                "//li[@class='result separate-style']//div[contains(@class, 'dice dice_3')]"
+        );
+        public static Component Dice4Results = new Component(
+                "Dice 4 Results",
+                "Container",
+                "Statistics Page",
+                "//li[@class='result separate-style']//div[contains(@class, 'dice dice_4')]"
+        );
+        public static Component Dice5Results = new Component(
+                "Dice 5 Results",
+                "Container",
+                "Statistics Page",
+                "//li[@class='result separate-style']//div[contains(@class, 'dice dice_5')]"
+        );
+        public static Component Dice6Results = new Component(
+                "Dice 6 Results",
+                "Container",
+                "Statistics Page",
+                "//li[@class='result separate-style']//div[contains(@class, 'dice dice_6')]"
+        );
     }
 
     /***************************************************************************************************************
      * These are the button components on the Statistics Page.
      ***************************************************************************************************************/
+
     public static class Button {
         public static Component CloseStatistics = new Component(
                 "Close Statistics",
@@ -154,6 +228,31 @@ public class Statistics {
                 "Statistics Page",
                 "//div[@class='sicbo_line_result big active']//div"
         );
+    }
+
+    /***************************************************************************************************************
+     * These are the methods on the Statistics Page.
+     ***************************************************************************************************************/
+
+    public static class Method {
+        public static Component getHotResults(int total) {
+            return new Component(
+                    "Hot Results",
+                    "Container",
+                    "Statistics Page",
+                    "//li[@class='result separate-style']//div[contains(@class, 'text text_')]" +
+                            "[normalize-space()='" + total + "']"
+            );
+        }
+        public static Component getColdResults(int total) {
+            return new Component(
+                    "Cold Results",
+                    "Container",
+                    "Statistics Page",
+                    "(//li[@class='result separate-style']//div[contains(@class,'text text')][normalize-space()='" +
+                            total + "'])[last()]/ancestor::li/following-sibling::li"
+            );
+        }
     }
 
 }

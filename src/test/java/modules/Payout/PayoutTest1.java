@@ -17,22 +17,22 @@ public class PayoutTest1 extends Payout implements PayoutCase {
     public int getTestCase() { return testCase; }
 
     public void setBetOption() {
-        if (!DataTypeHandler.findInArray(testCase, testCaseList) &&
-                !DataTypeHandler.findInArray(6, testCaseList)) return;
+        if (!DataTypeHandler.find(testCase, testCaseList) &&
+                !DataTypeHandler.find(6, testCaseList)) return;
 
         EventHandler.click(DealerTable.BettingOption.getMainBet(betOption));
     }
 
     public void getBetOption() {
-        if (!DataTypeHandler.findInArray(testCase, testCaseList) &&
-                !DataTypeHandler.findInArray(6, testCaseList)) return;
+        if (!DataTypeHandler.find(testCase, testCaseList) &&
+                !DataTypeHandler.find(6, testCaseList)) return;
 
         bet = getChipValue(DealerTable.BettingChip.getMainBet(betOption));
     }
 
     public void computeTestCase(int[] roundResult) {
-        if (!DataTypeHandler.findInArray(testCase, testCaseList) &&
-                !DataTypeHandler.findInArray(6, testCaseList)) return;
+        if (!DataTypeHandler.find(testCase, testCaseList) &&
+                !DataTypeHandler.find(6, testCaseList)) return;
         if (!RoundCondition.isSmallWin(roundResult)) return;
 
         payout = bet + (bet * payoutOdds);
@@ -40,7 +40,7 @@ public class PayoutTest1 extends Payout implements PayoutCase {
     }
 
     public void saveTestCase(int[] roundResult) {
-        if (!DataTypeHandler.findInArray(testCase, testCaseList)) return;
+        if (!DataTypeHandler.find(testCase, testCaseList)) return;
         if (!RoundCondition.isSmallWin(roundResult)) return;
 
         String currentRoundResult = DataTypeHandler.toString(roundResult);

@@ -17,14 +17,14 @@ public class PayoutTest9 extends Payout implements PayoutCase {
     public int getTestCase() { return testCase; }
 
     public void setBetOption() {
-        if (!DataTypeHandler.findInArray(testCase, testCaseList)) return;
+        if (!DataTypeHandler.find(testCase, testCaseList)) return;
 
         for (int betOption : betOptionList)
             EventHandler.click(DealerTable.BettingOption.getThreeDiceTotal(betOption));
     }
 
     public void getBetOption() {
-        if (!DataTypeHandler.findInArray(testCase, testCaseList)) return;
+        if (!DataTypeHandler.find(testCase, testCaseList)) return;
 
         byte i = 0;
         for (int betOption : betOptionList)
@@ -32,7 +32,7 @@ public class PayoutTest9 extends Payout implements PayoutCase {
     }
 
     public void computeTestCase(int[] roundResult) {
-        if (!DataTypeHandler.findInArray(testCase, testCaseList)) return;
+        if (!DataTypeHandler.find(testCase, testCaseList)) return;
         if (!RoundCondition.isThreeDiceTotalWin(roundResult, betOptionList[0]) &&
                 !RoundCondition.isThreeDiceTotalWin(roundResult, betOptionList[1])) return;
 
@@ -42,7 +42,7 @@ public class PayoutTest9 extends Payout implements PayoutCase {
     }
 
     public void saveTestCase(int[] roundResult) {
-        if (!DataTypeHandler.findInArray(testCase, testCaseList)) return;
+        if (!DataTypeHandler.find(testCase, testCaseList)) return;
         if (!RoundCondition.isThreeDiceTotalWin(roundResult, betOptionList[0]) &&
                 !RoundCondition.isThreeDiceTotalWin(roundResult, betOptionList[1])) return;
 
